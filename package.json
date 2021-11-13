@@ -15,8 +15,6 @@
       "express": "^4.17.1",
       "fs": "0.0.1-security",
       "mysql": "^2.18.1",
-      "puppeteer": "^10.4.0",
-      "spotify-web-api-node": "^5.0.2",
       "typeorm": "^0.2.37"
     }
   }
