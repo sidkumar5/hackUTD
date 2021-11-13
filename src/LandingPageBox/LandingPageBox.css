@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+.landing-page-header{
+    padding-top: 10em;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.landing-page-header a {
+    border-bottom-color: rgba(255, 255, 255, 0.35);
+	color: rgba(217, 252, 219, 0.8);
+}
+    .landing-page-header a:hover {
+        border-bottom-color: transparent;
+        color: #4eb980;
+    }
+
+.landing-page-header h1 {
+    font-size: 2.5em;
+    font-family: 'futura';
+    width: 35%;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid white; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+        typing 2.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+}
+    .truelink-text {
+        color: #4eb980;
+    }
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 35% }
+    }
+    
+    /* The typewriter cursor effect */
+    @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: white; }
+    }
+
+.landing-page-header p {
+    font-size: 1.5em;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.5em;
+    margin: 0.25em 0 0 0;
+}
+
+/* BUTTON */
+.find-match-button{
+    padding-top: 0.5em;
+    padding-bottom: 5em;
+    position: relative;
+    display: inline-flex;
+    width: 300px;
+    height: 55px;
+    margin: 0 15px;
+    perspective: 1000px;
+}
+.find-match-button a{
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+.find-match-button a:before,
+.find-match-button a:after{
+  position: absolute;
+  content: "FIND MY MATCH";
+  height: 55px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid rgba(217, 252, 219, 0.8);
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.find-match-button a:before{
+  color: black;
+  background: rgba(217, 252, 219, 0.8);
+  transform: rotateY(0deg) translateZ(25px);
+}
+.find-match-button a:after{
+  color: white;
+  transform: rotateX(90deg) translateZ(25px);
+}
+.find-match-button a:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+
+.spotify-screenshot {
+    margin-top: 5em;
+    margin-bottom: 5em;
+    width: 1080px;
+    height: 675px;
+    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 25px;
+}

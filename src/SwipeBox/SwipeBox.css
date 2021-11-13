@@ -1,0 +1,127 @@
+.match1 {
+    height: 757px;
+    width: 571px;
+
+    margin-top: 3em;
+    margin-bottom: 3em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 25px;
+}
+
+.yes-button {
+    top:50%;
+
+    background: rgba(217, 252, 219, 0.8);
+    border-radius: 20px;
+    border: 3px solid #4eb980;
+    color: turquoise;
+    cursor: pointer;
+    display: inline-block;
+    width: 40px;
+    height: 757px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.125em;
+    line-height: 3.25em;
+    padding: 0 1.5em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    
+    margin-right: 1em;
+    margin-top: 3em;
+    margin-bottom: 2em;
+    }
+        .yes-button:hover {
+            background: rgba(217, 252, 219, 0.8);
+            border: 3px solid rgba(217, 252, 219, 0.8);
+            box-shadow: 0 2px 4px 0 #4eb980, 0 3px 10px 0 #4eb980;
+        }
+
+.no-button {
+    background: rgb(214, 158, 158);
+    border-radius: 20px;
+    border: 3px solid indianred;
+    color: indianred;
+    cursor: pointer;
+    display: inline-block;
+    width: 40px;
+    height: 757px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.125em;
+    line-height: 3.25em;
+    padding: 0 1.5em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    
+    margin-left: 1em;
+    margin-top: 3em;
+    margin-bottom: 2em;
+    }
+        .no-button:hover {
+            background: rgb(214, 158, 158);
+            border: 3px solid rgb(214, 158, 158);
+            box-shadow: 0 2px 4px 0 indianred, 0 3px 10px 0 indianred;
+        }
+
+.user-info-container {
+    width: 60%;
+    min-height: 100px;
+    background-color: white;
+    margin: auto;
+    padding-bottom: 2em;
+    margin-bottom: 4em;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 15px;
+}
+    .user-info-container h1{
+        padding-top: 1em;
+        font-size: 60px;
+    }
+
+.age-display {
+    color: rgb(97, 134, 146);
+}
+
+.artist-list{
+    background-color: white;
+    min-height: 70px;
+    margin-bottom: 1em;
+    width: 80%;
+    margin: auto;
+}
+    .artist-container{
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        font-size: 15px;
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+        .artist-name{
+            color: white;
+            height: 30px;
+            font-size: 25px;
+            /* width: 50%; */
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 15px;
+            background: rgb(68, 202, 180);
+            margin-right: 1em;
+            margin-bottom: 1em;
+            padding-left: 1em;
+            padding-right: 1em;
+            padding-top: 0.3em;
+            padding-bottom: 0.3em;
+            font-weight: bold;
+        }
+            .artist-name:hover {
+                background: rgba(217, 252, 219, 0.8);
+                border: 3px solid rgba(217, 252, 219, 0.8);
+                box-shadow: 0 2px 4px 0 #4eb980, 0 3px 10px 0 #4eb980;
+                color: rgb(75, 75, 75);
+                cursor: pointer;
+            }

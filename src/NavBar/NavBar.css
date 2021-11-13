@@ -1,0 +1,54 @@
+
+.navbar {
+    width: 60%;
+    margin: auto;
+}
+
+.menu-play {
+    display: inline-block;
+    width: 33.3%;
+    text-align: left;
+    font-weight: bold;
+    color: white;
+}
+    .play-text {
+        width: 80px;
+    }
+    .play-text:hover {
+        cursor: pointer;
+        color: #4eb980;
+    }
+
+.menu-logo {
+    display: inline-block;
+    width: 33.3%;
+
+    color: #4eb980;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    font-family: 'futura';
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center
+}
+    .logo-image {
+        padding-top: 2em;
+        height: 70px;
+        width: 70px;
+    }
+
+.menu-leaderboard {
+    display: inline-block;
+    width: 33.3%;
+    text-align: right;
+    font-weight: bold;
+    color: white;
+}
+    .leaderboard-text {
+        float: right;
+        width: 160px;
+    }
+    .leaderboard-text:hover {
+        cursor: pointer;
+        color: #4eb980;
+    }

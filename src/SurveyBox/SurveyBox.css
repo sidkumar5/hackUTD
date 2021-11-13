@@ -1,0 +1,73 @@
+.form-box-container {
+    width: 60%;
+    min-height: 450px;
+    background-color: white;
+    margin: auto;
+    margin-top: 4em;
+    padding-bottom: 2em;
+    margin-bottom: 4em;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 15px;
+}
+
+    .form-box-container h1 {
+        padding-top: 1em;
+        color: #4eb980;
+    }
+    .form-box-container h5 {
+        color: #2b2c2b;
+    }
+
+.form-box {
+    width: 80%;
+    min-height: 500px;
+    background-color: rgba(217, 252, 219, 0.8);
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 2.5em;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 15px;
+}
+    .form-box h2{
+        padding-top: 1em;
+        font-size: 20px;
+        font-family: futura;
+        color: rgb(61, 60, 60);
+    }
+    .form-box textarea {
+        width: 80%;
+        height: 40px;
+        font-size: 30px;
+        font-family: futura;
+        color: gray;
+    }
+    .button1 {
+        background: rgb(220, 255, 252);
+        border-radius: 30px;
+        border: 3px solid turquoise;
+        color: turquoise;
+        cursor: pointer;
+        display: inline-block;
+        width: 30%;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.125em;
+        line-height: 3.25em;
+        padding: 0 1.5em;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        
+        margin-right: 1em;
+        margin-top: 3em;
+        margin-bottom: 2em;
+    }
+        .button1:hover {
+            background: rgb(179, 255, 247);
+            border: 3px solid rgb(173, 247, 239);
+            box-shadow: 0 2px 4px 0 turquoise, 0 3px 10px 0 turquoise;
+        }
