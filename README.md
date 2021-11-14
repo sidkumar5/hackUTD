@@ -1,70 +1,394 @@
-# Getting Started with Create React App
+# Flight Engine
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Mock flight data delivered simply and quickly without a database.
 
-## Available Scripts
+## Let's Get Started
 
-In the project directory, you can run:
+### 👉 [I just want flight data](#deploy-flight-engine-and-use-now)
 
-### `yarn start`
+### 👉 [I want a backend that I can customize](./docs/LOCAL_DEVELOPMENT.MD)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Deploy Flight Engine and Use Now
 
-### `yarn test`
+If you would like to just use Flight Engine as we have designed it, deploy a copy to Heroku using the button below.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**NOTE**: If you go with this approach, you will not be able to customize Flight Engine.
 
-### `yarn build`
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/AmericanAirlines/Flight-Engine)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Retrieving Data
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Once your app is up and running (either locally or hosted somewhere like Heroku), make HTTP requests to retrieve the data documented below.
 
-### `yarn eject`
+## Airport Information
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Each endpoint displays information related to the airport whose IATA (Airport Code) is provided with the request:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<details><summary> Examples </summary>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Get the details of a given airport by its IATA (Airport Code)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**URL** : `/airports?code= <IATA-CODE>`
 
-## Learn More
+**Method**: `GET`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Auth required**: No
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Permissions required**: None
 
-### Code Splitting
+**Success Response**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Code**: `200 OK`
 
-### Analyzing the Bundle Size
+**Respones**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```json
+{
+  "code": "DFW",
+  "city": "Dallas-Fort Worth",
+  "timezone": "America/Chicago",
+  "location": {
+    "latitude": 32.8998,
+    "longitude": 97.0403
+  }
+}
+```
 
-### Making a Progressive Web App
+## 404 Response
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```html
+Airport not found
+```
 
-### Advanced Configuration
+## Malformed Request Response
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```html
+Please enter a valid flight code i.e. DFW, GSO, ATL...
+```
 
-### Deployment
+</details>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `yarn build` fails to minify
+## Flight Information
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<details><summary> Examples </summary>
+
+Get the details of a given airport by its IATA (Airport Code)
+
+## Default Request
+
+**URL** : `/flights?date=YYYY-MM-DD`
+
+**Method**: `GET`
+
+**Auth required**: No
+
+**Permissions required**: None
+
+### <a id="default-success-response"></a> Success Response
+
+**Code**: `200 OK`
+
+```json
+[
+  {
+    "flightNumber": "0978",
+    "origin": {
+      "code": "DFW",
+      "city": "Dallas-Fort Worth",
+      "timezone": "America/Chicago",
+      "location": {
+        "latitude": 32.8998,
+        "longitude": 97.0403
+      }
+    },
+    "destination": {
+      "code": "PHL",
+      "city": "Philadelphia",
+      "timezone": "America/New_York",
+      "location": {
+        "latitude": 39.8729,
+        "longitude": -75.2437
+      }
+    },
+    "distance": 7393,
+    "duration": {
+      "locale": "18h 36m",
+      "hours": 18,
+      "minutes": 36
+    },
+    "departureTime": "2017-08-29T02:36:00.000-05:00",
+    "arrivalTime": "2017-08-29T22:12:00.000-04:00",
+    "aircraft": {
+      "model": "321",
+      "passengerCapacity": {
+        "total": 181,
+        "main": 165,
+        "first": 16
+      },
+      "speed": 400
+    }
+  },
+  "..."
+]
+```
+
+---
+
+## Flight Record From Specified Airport Destination Request
+
+Will display flights filtered by airport destination
+
+**URL** : `/flights?date=YYYY-MM-DD&destination=<IATA-CODE>`
+
+**Method**: `GET`
+
+**Auth required**: No
+
+**Permissions required**: None
+
+### <a id="desitnation-success-response"></a> Success Response
+
+**Code**: `200 OK`
+
+**Examples**
+
+<details><summary> Flights by Destination</summary>
+
+**Sample Endpoint** : `/flights?date=YYYY-MM-DD&destination=GSO`
+
+```json
+[
+  {
+    "flightNumber": "8124",
+    "origin": {
+      "code": "DFW",
+      "city": "Dallas-Fort Worth",
+      "timezone": "America/Chicago",
+      "location": {
+        "latitude": 32.8998,
+        "longitude": 97.0403
+      }
+    },
+    "destination": {
+      "code": "GSO",
+      "city": "Greensboro",
+      "timezone": "America/New_York",
+      "location": {
+        "latitude": 36.0726,
+        "longitude": -79.792
+      }
+    },
+    "distance": 7675,
+    "duration": {
+      "locale": "21h 46m",
+      "hours": 21,
+      "minutes": 46
+    },
+    "departureTime": "2021-08-29T05:10:00.000-05:00",
+    "arrivalTime": "2021-08-30T03:56:00.000-04:00",
+    "aircraft": {
+      "model": "757",
+      "passengerCapacity": {
+        "total": 176,
+        "main": 160,
+        "first": 16
+      },
+      "speed": 380
+    }
+  },
+  {
+    "flightNumber": "1643",
+    "origin": {
+      "code": "DFW",
+      "city": "Dallas-Fort Worth",
+      "timezone": "America/Chicago",
+      "location": {
+        "latitude": 32.8998,
+        "longitude": 97.0403
+      }
+    },
+    "destination": {
+      "code": "GSO",
+      "city": "Greensboro",
+      "timezone": "America/New_York",
+      "location": {
+        "latitude": 36.0726,
+        "longitude": -79.792
+      }
+    },
+    "distance": 7675,
+    "duration": {
+      "locale": "20h 50m",
+      "hours": 20,
+      "minutes": 50
+    },
+    "departureTime": "2021-08-29T09:25:00.000-05:00",
+    "arrivalTime": "2021-08-30T07:15:00.000-04:00",
+    "aircraft": {
+      "model": "321",
+      "passengerCapacity": {
+        "total": 181,
+        "main": 165,
+        "first": 16
+      },
+      "speed": 400
+    }
+  },
+  "..."
+]
+```
+
+</details>
+
+---
+
+## Flight Record From Specified Airport Origin Request
+
+Will display flights filtered by airport destination
+
+**URL** : `/flights?date=YYYY-MM-DD&origin=IATA-CODE`
+
+**Method**: `GET`
+
+**Auth required**: No
+
+**Permissions required**: None
+
+### <a id="origin-success-response"></a> Success Response
+
+**Code**: `200 OK`
+
+**Examples**
+
+<details><summary> Flights by Origin</summary>
+<p>
+
+**Sample Endpoint** : `/flights?date=YYYY-MM-DD&origin=PHL`
+
+```json
+[
+  {
+    "flightNumber": "0216",
+    "origin": {
+      "code": "PHL",
+      "city": "Philadelphia",
+      "timezone": "America/New_York",
+      "location": {
+        "latitude": 39.8729,
+        "longitude": -75.2437
+      }
+    },
+    "destination": {
+      "code": "SAN",
+      "city": "San Diego",
+      "timezone": "America/Los_Angeles",
+      "location": {
+        "latitude": 32.7338,
+        "longitude": -117.1933
+      }
+    },
+    "distance": 2368,
+    "duration": {
+      "locale": "6h 38m",
+      "hours": 6,
+      "minutes": 38
+    },
+    "departureTime": "2021-08-29T02:18:00.000-04:00",
+    "arrivalTime": "2021-08-29T05:56:00.000-07:00",
+    "aircraft": {
+      "model": "757",
+      "passengerCapacity": {
+        "total": 176,
+        "main": 160,
+        "first": 16
+      },
+      "speed": 380
+    }
+  },
+  {
+    "flightNumber": "3815",
+    "origin": {
+      "code": "PHL",
+      "city": "Philadelphia",
+      "timezone": "America/New_York",
+      "location": {
+        "latitude": 39.8729,
+        "longitude": -75.2437
+      }
+    },
+    "destination": {
+      "code": "SAN",
+      "city": "San Diego",
+      "timezone": "America/Los_Angeles",
+      "location": {
+        "latitude": 32.7338,
+        "longitude": -117.1933
+      }
+    },
+    "distance": 2368,
+    "duration": {
+      "locale": "6h 1m",
+      "hours": 6,
+      "minutes": 1
+    },
+    "departureTime": "2021-08-29T03:48:00.000-04:00",
+    "arrivalTime": "2021-08-29T06:49:00.000-07:00",
+    "aircraft": {
+      "model": "738",
+      "passengerCapacity": {
+        "total": 160,
+        "main": 144,
+        "first": 16
+      },
+      "speed": 400
+    }
+  },
+  "..."
+]
+```
+
+</p>
+</details>
+
+---
+
+## Malformed Request Response
+
+```html
+'date' value (2017-08-299) is malformed; 'date' must use the following format: YYYY-MM-DD
+```
+
+## Missing Date Response
+
+```html
+'date' is a required parameter and must use the following format: YYYY-MM-DD
+```
+
+</details>
+
+---
+
+## Testing
+
+This project utilizes framework uses Facebook's [Jest](https://facebook.github.io/jest/) framework for testing.
+
+Writing a test is as simple as creating a `*.test.ts` file in the `./src` directory along with an associated `describe()` and `it()` function.
+
+Simply run `npm run test` to run the existing test suite or use it to execute your own tests once you've created new ones.
+
+Additional testing scripts:
+
+- `test`: runs all tests
+- `test:changed`: runs tests related to uncommited git changes only
+
+---
+
+## Contributing
+
+Interested in contributing to the project? Check out our [Contributing Guidelines](.github/CONTRIBUTING.md).
