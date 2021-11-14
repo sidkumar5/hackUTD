@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+}
+
+
+#mapContainer {
+  width: 53%;
+  /* margin-left: 50em; */
+  padding: 5px;
+  position: fixed;
+  right: 0;
+  top: 150px;
+  
+  
+}
+
+#mapClipPath {
+	height: 470px;
+	width: 700px;
+	background-color: white;
+  position: relative;
+  
+}
